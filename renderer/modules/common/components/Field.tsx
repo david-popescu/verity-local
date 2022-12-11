@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Field } from './types';
+import { Field } from '../types';
 
 const Field: FC<Field> = ({ settings }) => {
     const onChange = (e) => settings.setState(e.target.value);

@@ -1,6 +1,6 @@
-from src.string_similarity import string_similarity
-from src.external.weather import get_weather
-from src.external.wikipedia import search
+from string_similarity import string_similarity
+from external.weather import get_weather
+from external.wikipedia import search
 
 
 ACTION_ARRAY: [str] = ["open", "search", "activity summary", "weather"]
