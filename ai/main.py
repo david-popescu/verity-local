@@ -3,9 +3,10 @@ import random
 from src.guess import Guess
 from src.guess_generator import GuessGenerator
 from src.string_similarity import string_similarity
-from src.process_input import select_action, reset_action
+# from src.process_input import select_action, reset_action
 
-intents_file = open('intents.json')
+intents_file = open(
+    '/Users/davidpopescu/Desktop/tmp/project-v/verity/ai/intents.json')
 INTENTS = json.load(intents_file)
 
 
@@ -42,9 +43,25 @@ def fetch_guess(user_input: str) -> str:
     return possible_guesses[activations.index(max(activations))].response
 
 
-print(select_action("weather"))
-reset_action()
-print(select_action("search", "Dog"))
-reset_action()
+OUTPUT: str = "{\"response\":\"" + fetch_guess("Hello!") + "\"}"
 
-print(fetch_guess("Hello!"))
+IO_FILE = open(
+    "/Users/davidpopescu/Desktop/tmp/project-v/verity/IO.json", "w")
+IO_FILE.write(OUTPUT)
+IO_FILE.close()
+
+# IO_FILE = open(
+# "/Users/davidpopescu/Desktop/tmp/project-v/verity/IO.json", "w")
+# IO_FILE.write(select_action("weather"))
+# reset_action()
+# IO_FILE.write(select_action("search", "Dog"))
+# reset_action()
+# IO_FILE.write(fetch_guess("Hello!"))
+# IO_FILE.close()
+
+# print(select_action("weather"))
+# reset_action()
+# print(select_action("search", "Dog"))
+# reset_action()
+#
+# print(fetch_guess("Hello!"))
