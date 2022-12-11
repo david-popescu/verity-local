@@ -1,0 +1,50 @@
+[
+  {
+    "context": "greet",
+    "patterns": [
+      "hello",
+      "hi",
+      "greetings",
+      "wake up"
+    ],
+    "responses": [
+      "Hello, sir!",
+      "Nice to hear you again!",
+      "How can I be of service?"
+    ]
+  },
+  {
+    "context": "goodbye",
+    "patterns": [
+      "bye",
+      "bye bye",
+      "cya",
+      "see you soon",
+      "see you later"
+    ],
+    "responses": [
+      "Goodbye, sir!",
+      "Have a nice day, boss!",
+      "Hope I could be of service!"
+    ]
+  },
+  {
+    "context": "mood",
+    "patterns": [
+      "how are you",
+      "how's it going",
+      "how is it going",
+      "what's up"
+    ],
+    "responses": [
+      "I feel amazing, sir!",
+      "I feel great! Thank you for asking!",
+      "I feel ready to help!"
+    ]
+  },
+  {
+    "context": "thank",
+    "patterns": ["thank you", "thanks", "amazing"],
+    "responses": ["Always a pleasure, sir!"]
+  }
+]
