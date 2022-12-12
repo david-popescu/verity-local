@@ -9,3 +9,8 @@ export type Field = {
         className?: string;
     };
 };
+
+export type Form = {
+    action: any;
+    fields: Field[];
+};

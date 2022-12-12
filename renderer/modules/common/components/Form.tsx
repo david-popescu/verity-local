@@ -1,9 +1,15 @@
 import { FC } from 'react';
 import Field from './Field';
+import { Form } from '../types';
 
-const Form: FC<{ fields: Field[] }> = ({ fields }) => {
+const Form: FC<Form> = ({ action, fields }) => {
+    const onSubmit = (e) => {
+        e.preventDefault();
+        action();
+    };
+
     return (
-        <form action="" className="flex">
+        <form onSubmit={(e) => onSubmit(e)} className="flex">
             {fields.map(({ settings }: Field, idx) => (
                 <Field
                     key={idx}
@@ -16,6 +22,9 @@ const Form: FC<{ fields: Field[] }> = ({ fields }) => {
                     }}
                 />
             ))}
+            <button type="submit" className="btn-blue ml-2">
+                Send
+            </button>
         </form>
     );
 };

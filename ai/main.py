@@ -5,9 +5,10 @@ from src.guess_generator import GuessGenerator
 from src.string_similarity import string_similarity
 # from src.process_input import select_action, reset_action
 
-intents_file = open(
+INTENTS_FILE = open(
     '/Users/davidpopescu/Desktop/tmp/project-v/verity/ai/intents.json')
-INTENTS = json.load(intents_file)
+INTENTS = json.load(INTENTS_FILE)
+INTENTS_FILE.close()
 
 
 def set_activation(current_activation, guess_generator) -> None:
@@ -43,12 +44,16 @@ def fetch_guess(user_input: str) -> str:
     return possible_guesses[activations.index(max(activations))].response
 
 
-OUTPUT: str = "{\"response\":\"" + fetch_guess("Hello!") + "\"}"
+USER_INPUT_FILE = open('/Users/davidpopescu/Desktop/tmp/project-v/verity/user-input.json')
+USER_INPUT = json.load(USER_INPUT_FILE)
+USER_INPUT_FILE.close()
 
-IO_FILE = open(
-    "/Users/davidpopescu/Desktop/tmp/project-v/verity/IO.json", "w")
-IO_FILE.write(OUTPUT)
-IO_FILE.close()
+OUTPUT: str = "{\"response\":\"" + fetch_guess(USER_INPUT['user_input']) + "\"}"
+
+RESPONSE_FILE = open(
+    "/Users/davidpopescu/Desktop/tmp/project-v/verity/response.json", "w")
+RESPONSE_FILE.write(OUTPUT)
+RESPONSE_FILE.close()
 
 # IO_FILE = open(
 # "/Users/davidpopescu/Desktop/tmp/project-v/verity/IO.json", "w")

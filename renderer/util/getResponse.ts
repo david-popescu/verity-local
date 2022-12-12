@@ -1,4 +1,4 @@
-const IO_FILE = require('../../IO.json');
+const IO_FILE = require('../../response.json');
 
 const getResponse = () => IO_FILE;
 
