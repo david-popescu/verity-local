@@ -3,7 +3,7 @@ import random
 from src.guess import Guess
 from src.guess_generator import GuessGenerator
 from src.string_similarity import string_similarity
-# from src.process_input import select_action, reset_action
+from src.process_input import select_action, reset_action
 
 INTENTS_FILE = open(
     '/Users/davidpopescu/Desktop/tmp/project-v/verity/ai/intents.json')
@@ -30,21 +30,31 @@ def generate_best_response(guess_generator: GuessGenerator) -> None:
 
 
 def fetch_guess(user_input: str) -> str:
-    possible_guesses: [Guess] = []
-    activations: [float] = []
+    try:
+        possible_guesses: [Guess] = []
+        activations: [float] = []
 
-    for intent in INTENTS:
-        guess_generator = GuessGenerator(intent,
-                                         user_input,
-                                         possible_guesses,
-                                         activations)
+        for intent in INTENTS:
+            guess_generator = GuessGenerator(intent,
+                                             user_input,
+                                             possible_guesses,
+                                             activations)
 
-        generate_best_response(guess_generator)
+            generate_best_response(guess_generator)
 
-    return possible_guesses[activations.index(max(activations))].response
+        return possible_guesses[activations.index(max(activations))].response
+
+    except Exception as e:
+        e.__init__()
+        return 'I am sorry, sir. What do you mean?'
 
 
-USER_INPUT_FILE = open('/Users/davidpopescu/Desktop/tmp/project-v/verity/user-input.json')
+# reset_action()
+# print(fetch_guess('weather'))
+# reset_action()
+
+USER_INPUT_FILE = open(
+    '/Users/davidpopescu/Desktop/tmp/project-v/verity/user-input.json')
 USER_INPUT = json.load(USER_INPUT_FILE)
 USER_INPUT_FILE.close()
 
