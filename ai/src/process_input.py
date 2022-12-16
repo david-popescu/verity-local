@@ -7,7 +7,15 @@ ACTION_IDX: int = 0
 ACTION_SCORE: float = 0.0
 
 
-def select_action(user_input: str, *args) -> str:
+def reset_action() -> None:
+    global ACTION_IDX
+    global ACTION_SCORE
+
+    ACTION_IDX = 0
+    ACTION_SCORE = 0.0
+
+
+def select_action(user_input: str, *args):
     global ACTION_ARRAY
     global ACTION_IDX
     global ACTION_SCORE
@@ -18,21 +26,14 @@ def select_action(user_input: str, *args) -> str:
             ACTION_IDX = idx
 
     # TODO: Expand on multiple actions and response possibilities.
-    if ACTION_ARRAY[ACTION_IDX] == 'weather':
-        recommendation: str = ' I recommend to wear your scarf.'
+    if ACTION_SCORE > 0.5:
+        if ACTION_ARRAY[ACTION_IDX] == 'weather':
+            recommendation: str = ' I recommend wearing your scarf.'
 
-        print(ACTION_ARRAY[ACTION_IDX] + ': There are ' + str(get_weather().json()['current_weather']['temperature']) + ' degrees celsius.' + recommendation)
-        return ACTION_ARRAY[ACTION_IDX] + ': There are ' + str(get_weather().json()['current_weather']['temperature']) + ' degrees celsius.' + recommendation
+            res = get_weather().json()
+            return 'There are ' + str(res['current_weather']['temperature']) + ' degrees celsius.' + recommendation
 
-    elif ACTION_ARRAY[ACTION_IDX] == 'search':
-        return ACTION_ARRAY[ACTION_IDX] + ": " + search(args[0])
-
-    return ACTION_ARRAY[ACTION_IDX]
-
-
-def reset_action() -> None:
-    global ACTION_IDX
-    global ACTION_SCORE
-
-    ACTION_IDX = 0
-    ACTION_SCORE = 0.0
+        elif ACTION_ARRAY[ACTION_IDX] == 'search':
+            return ACTION_ARRAY[ACTION_IDX] + ": " + search(args[0])
+    else:
+        raise

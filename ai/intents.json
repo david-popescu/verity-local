@@ -16,6 +16,7 @@
   {
     "context": "goodbye",
     "patterns": [
+      "goodbye",
       "bye",
       "bye bye",
       "cya",

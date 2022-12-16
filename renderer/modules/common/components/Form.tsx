@@ -9,7 +9,7 @@ const Form: FC<Form> = ({ action, fields }) => {
     };
 
     return (
-        <form onSubmit={(e) => onSubmit(e)} className="flex">
+        <form onSubmit={(e) => onSubmit(e)} className="flex w-full">
             {fields.map(({ settings }: Field, idx) => (
                 <Field
                     key={idx}
